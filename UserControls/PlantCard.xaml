@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="MyGarden2.UserControls.PlantCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MyGarden2.UserControls" xmlns:models="clr-namespace:MyGarden2.Models"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="667" d:DesignWidth="623">
+    
+
+    <Grid Margin="10">
+        <Border Background="YellowGreen" BorderBrush="DarkGreen" BorderThickness="5" Padding="2" CornerRadius="10"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid>
+                <StackPanel Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <!-- Название растения -->
+                    <TextBlock Text="{Binding Name}" FontSize="32" FontWeight="Bold" Foreground="DarkGreen" HorizontalAlignment="Center" Margin="0 0 0 10" />
+
+                    <!-- Изображение растения -->
+                    <Image Source="{Binding ImagePath}" Stretch="Uniform" Margin="10" HorizontalAlignment="Stretch" Height="275"/>
+                    <!-- Даты посева и сбора -->
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" VerticalAlignment="Top">
+                            <TextBlock Text="Рекомендуемые даты посева: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding DateSowingRecBegin, StringFormat='с {0:dd.MM.yyyy}'}" />
+                            <TextBlock Text="{Binding DateSowingRecEnd, StringFormat='по {0:dd.MM.yyyy}'}" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                            <TextBlock Text="Рекомендуемые даты сбора урожая: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding DateHarvestRecBegin, StringFormat='с {0:dd.MM.yyyy}'}" />
+                            <TextBlock Text="{Binding DateHarvestRecEnd, StringFormat='по {0:dd.MM.yyyy}'}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Размеры растения -->
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding Length, StringFormat='Длина: {0} см'}" FontWeight="Bold" Foreground="DarkSlateGray" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="{Binding Width, StringFormat='Ширина: {0} см'}" FontWeight="Bold" Foreground="DarkSlateGray" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Column="2" Text="{Binding IsGreenHouseRecText}" FontWeight="Bold" Foreground="DarkSlateGray" HorizontalAlignment="Center" />
+                    </Grid>
+
+                    <!-- Описание растения -->
+                    <TextBlock Text="Описание:" FontWeight="Bold" Margin="10 0 0 0" />
+                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+
+                    <!-- Условия полива -->
+                    <TextBlock Text="Условия полива:" FontWeight="Bold" Margin="10 0 0 0" />
+                    <TextBlock Text="{Binding WateringConditions}" />
+
+                    <!-- Кнопки внизу -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 10 0 0">
+                        <Button x:Name="PlantButton" Background="DarkGreen" Content="Добавить в коллекцию" Width="200" Margin="5" Click="PlantButton_Click"/>
+                        <Button x:Name="ChangeButton" Background="DarkGreen" Content="Изменить данные" Width="150" Margin="5" Click="ChangeButton_Click"/>
+                        <Button x:Name="DeleteButton" Background="DarkGreen" Content="Удалить" Width="100" Margin="5" Click="DeleteButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+                <!-- Кнопка закрытия в правом верхнем углу -->
+                <Button x:Name="CloseButton" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top"
+                        Margin="5"
+                        Width="30" 
+                        Height="30"
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        Click="CloseButton_Click">
+                    <materialDesign:PackIcon Kind="Close" Width="20" Height="20" />
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

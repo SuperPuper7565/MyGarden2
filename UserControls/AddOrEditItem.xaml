@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="MyGarden2.UserControls.AddOrEditItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyGarden2.UserControls"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="667" d:DesignWidth="623">
+    <Grid>
+        <Border Background="#FF79B712" Opacity="0.75" BorderBrush="DarkGreen" BorderThickness="5" Padding="20" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+                <Button x:Name="CloseButton" Content="X" Height="30" Width="50" HorizontalAlignment="Right" Background="DarkGreen" Foreground="White" Click="CloseButton_Click" IsCancel="True"/>
+                <!-- Подпись сверху -->
+                <TextBlock x:Name="HeaderText" FontSize="20" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,10" />
+
+                <!-- Поле для редактирования текста -->
+                <TextBox x:Name="NameTextBox" Width="280" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10" />
+
+                <!-- Кнопка -->
+                <Button x:Name="OKButton" Content="Применить изменения" Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Background="DarkGreen" Foreground="White" Click="EditOKButton_Click" IsDefault="True"/>
+            </StackPanel>
+        </Border>
+
+
+    </Grid>
+</UserControl>

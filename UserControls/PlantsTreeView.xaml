@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="MyGarden2.UserControls.PlantsTreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyGarden2.UserControls" xmlns:local1="clr-namespace:MyGarden2.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="667" d:DesignWidth="250">
+    <Grid>
+        <TreeView Name="plantsTreeView" 
+                  ItemsSource="{Binding PlantingMaterials}" 
+                  PreviewMouseRightButtonDown="TreeView_PreviewMouseRightButtonDown" 
+                  SelectedItemChanged="plantsTreeView_SelectedItemChanged"
+                  ContextMenuOpening="plantsTreeView_ContextMenuOpening">
+            <TreeView.ContextMenu>
+                <ContextMenu Background="#FF8ED911" Opacity="0.7">
+                    <MenuItem Header="Редактировать" Name="ChangeName" Click="ChangeName_Click" />
+                    <MenuItem Header="Удалить" Name="Delete" Click="Delete_Click" />
+                </ContextMenu>
+            </TreeView.ContextMenu>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type local1:PlantingMaterial}" ItemsSource="{Binding PlantingCatalog}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"/>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" FontFamily="Arial"/>
+                    </StackPanel>
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type local1:PlantingCatalog}" ItemsSource="{Binding PlantTypes}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="12"/>
+                                <TextBlock Text="{Binding Name}" FontSize="12" FontFamily="Arial"/>
+                            </StackPanel>
+                            <HierarchicalDataTemplate.ItemTemplate>
+                                <HierarchicalDataTemplate DataType="{x:Type local1:PlantType}" ItemsSource="{Binding Plants}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontSize="12"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="12" FontFamily="Arial"/>
+                                    </StackPanel>
+                                    <HierarchicalDataTemplate.ItemTemplate>
+                                        <DataTemplate DataType="{x:Type local1:Plant}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="🌱 " FontSize="12"/>
+                                                <TextBlock Text="{Binding Name}" FontSize="12" FontFamily="Arial"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </HierarchicalDataTemplate.ItemTemplate>
+                                </HierarchicalDataTemplate>
+                            </HierarchicalDataTemplate.ItemTemplate>
+                        </HierarchicalDataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</UserControl>

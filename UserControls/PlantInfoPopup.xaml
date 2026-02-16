@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="MyGarden2.UserControls.PlantInfoPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Border Background="YellowGreen" BorderBrush="DarkGreen" BorderThickness="5" Padding="2" CornerRadius="10">
+        <Border.Effect>
+            <DropShadowEffect Color="DarkGreen" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header with close button -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="{Binding PlantName}" 
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold" 
+                           FontSize="16" 
+                           Margin="5"/>
+            </Grid>
+
+            <!-- Plant Image -->
+            <Image Grid.Row="1" 
+                   Source="{Binding PlantImage}" 
+                   Width="100" 
+                   Height="100" 
+                   Stretch="Uniform"
+                   Margin="5,0,5,5"/>
+
+            <!-- Plant Info -->
+            <StackPanel Grid.Row="2" Margin="5,0,5,5">
+                <TextBlock Text="{Binding PlantingDate}" FontSize="12"/>
+                <TextBlock Text="{Binding DaysToHarvest}" 
+                   FontSize="12"
+                   Margin="0,5,0,0"
+                   Foreground="{Binding DaysToHarvest}"/>
+                <!-- Добавьте другие свойства растения по необходимости -->
+            </StackPanel>
+            <!-- Кнопки действий -->
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <!-- Кнопка Выкопать -->
+                <Button x:Name="DeletePlantButton"
+                        Margin="5"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        Click="DeletePlantButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Shovel" Width="20" Height="20" Margin="0 0 4 0"/>
+                        <TextBlock Text="Выкопать" 
+                               VerticalAlignment="Center"
+                               FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Кнопка Пересадить -->
+                <Button x:Name="ReplacePlantButton" 
+                        Margin="5"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        Click="ReplacePlantButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="SwapHorizontal" Width="20" Height="20" Margin="0 0 4 0"/>
+                        <TextBlock Text="Пересадить" 
+                               VerticalAlignment="Center"
+                               FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

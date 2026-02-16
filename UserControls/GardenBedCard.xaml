@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="MyGarden2.UserControls.GardenBedCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="667" d:DesignWidth="623">
+    <Grid>
+        <!-- Определяем две строки: 1 — для сетки, 2 — для кнопок -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Динамическая сетка -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+        </Grid.RowDefinitions>
+
+        <!-- Здесь будет сетка грядки -->
+        <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Name="GardenGrid"/>
+        </Grid>
+
+        <!-- Панель с кнопками внизу -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="10">
+            <Button x:Name="AddButton" Content="Добавить в коллекцию" Width="200" Margin="5" Click="AddButton_Click" Background="#FF79B712" Opacity="0.8"/>
+            <Button x:Name="ChangeButton" Content="Изменить данные" Width="150" Margin="5" Click="ChangeButton_Click" Background="#FF79B712" Opacity="0.8"/>
+            <Button x:Name="DeleteButton" Content="Удалить" Width="100" Margin="5" Click="DeleteButton_Click" Background="#FF79B712" Opacity="0.8"/>
+        </StackPanel>
+        <Button x:Name="CloseButton"
+        Grid.Row="0"
+        HorizontalAlignment="Right" 
+        VerticalAlignment="Top"
+        Margin="5"
+        Width="30" 
+        Height="30"
+        Style="{StaticResource MaterialDesignIconButton}"
+        Background="#FF79B712"
+        Opacity="0.8"
+        Click="CloseButton_Click">
+            <materialDesign:PackIcon Kind="Close" Width="20" Height="20" />
+        </Button>
+    </Grid>
+</UserControl>

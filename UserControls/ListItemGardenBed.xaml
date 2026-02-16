@@ -1,0 +1,7 @@
+﻿<UserControl x:Class="MyGarden2.UserControls.ListItemGardenBed"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border x:Name="MainBorder" Padding="5">
+        <Canvas x:Name="GardenCanvas"/>
+    </Border>
+</UserControl>
